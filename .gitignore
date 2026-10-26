@@ -1,0 +1,16 @@
+# 依存パッケージ（QA 用の playwright-core のみ。拡張機能本体はビルド不要）
+node_modules/
+
+# QA の一時出力（スクリーンショットは README 用に docs/screenshots へ厳選してコピーする）
+qa/screenshots/
+qa/out.json
+
+# 検証用 Brave プロファイルは %LOCALAPPDATA% に置くためリポジトリ外だが、念のため
+.profile/
+*.log
+
+# エディタ・OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

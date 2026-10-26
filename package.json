@@ -1,0 +1,14 @@
+{
+  "name": "gdocs-menu-customizer",
+  "private": true,
+  "type": "module",
+  "description": "Google ドキュメント用 Brave/Chrome 拡張機能（ツールバーの並べ替え・非表示、ドキュメント専用ダークモード）。拡張機能本体はビルド不要で、ここの依存は QA 用のみ。",
+  "scripts": {
+    "qa:brave": "bun qa/launch-brave.mjs",
+    "qa:toolbar": "node qa/test-toolbar.mjs",
+    "icons": "node tools/make-icons.mjs"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.64.1"
+  }
+}
