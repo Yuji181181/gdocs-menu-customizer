@@ -1,0 +1,382 @@
+body {
+  min-height: 100vh;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 28px 24px 12px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand h1 {
+  font-size: 20px;
+}
+
+.brand p {
+  margin: 2px 0 0;
+  font-size: 13px;
+}
+
+.tabs {
+  display: flex;
+  gap: 4px;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tab {
+  position: relative;
+  padding: 10px 16px;
+  border: 0;
+  background: none;
+  color: var(--text-2);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tab:hover {
+  color: var(--text);
+}
+
+.tab[aria-selected="true"] {
+  color: var(--accent);
+}
+
+.tab[aria-selected="true"]::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: -1px;
+  height: 3px;
+  border-radius: 3px 3px 0 0;
+  background: var(--accent);
+}
+
+.tab:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+  border-radius: 6px;
+}
+
+.layout {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 20px 24px 64px;
+}
+
+.tab-panel {
+  display: grid;
+  gap: 16px;
+}
+
+.tab-panel[hidden] {
+  display: none;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) minmax(320px, 1.4fr);
+  gap: 16px;
+  align-items: start;
+}
+
+@media (max-width: 760px) {
+  .two-col {
+    grid-template-columns: 1fr;
+  }
+}
+
+.panel {
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.panel-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.panel-head h2 {
+  font-size: 16px;
+}
+
+.panel-head p {
+  margin: 4px 0 0;
+  font-size: 13px;
+}
+
+.panel-actions,
+.row-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.row-actions {
+  align-items: center;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.notice {
+  padding: 12px 16px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--accent-soft);
+  font-size: 13px;
+}
+
+/* ---------- プレビュー ---------- */
+.preview {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  min-height: 44px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: var(--surface-2);
+}
+
+.preview .pill {
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.preview .bar {
+  width: 1px;
+  height: 20px;
+  margin: 0 4px;
+  background: var(--text-2);
+  opacity: 0.5;
+}
+
+/* ---------- 並べ替えリスト ---------- */
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 4px;
+}
+
+.item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 4px 8px 4px 4px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: var(--surface-2);
+  transition: background 0.12s, opacity 0.12s;
+}
+
+.item:hover {
+  border-color: var(--border);
+}
+
+.item.is-selected {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.item.is-hidden .item-label {
+  color: var(--text-2);
+  text-decoration: line-through;
+  text-decoration-color: color-mix(in srgb, var(--text-2) 60%, transparent);
+}
+
+.item:not([data-sortable]) {
+  padding-left: 14px;
+}
+
+.item[data-sortable] {
+  user-select: none;
+  touch-action: none;
+  cursor: grab;
+}
+
+.item.is-dragging {
+  z-index: 2;
+  border-color: var(--accent);
+  background: var(--surface);
+  box-shadow: 0 8px 24px rgb(16 24 40 / 18%);
+  opacity: 0.95;
+  transition: none;
+}
+
+body.is-sorting,
+body.is-sorting * {
+  cursor: grabbing !important;
+}
+
+.list.is-sorting .item:not(.is-dragging) {
+  transition: transform 0.15s ease;
+}
+
+.item.is-separator {
+  min-height: 30px;
+  background: transparent;
+  border: 1px dashed var(--border);
+}
+
+.item.is-separator .item-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-2);
+  font-size: 12px;
+}
+
+.item.is-separator .item-label::before,
+.item.is-separator .item-label::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.handle {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 30px;
+  color: var(--text-2);
+  cursor: grab;
+  flex: none;
+}
+
+.handle:active {
+  cursor: grabbing;
+}
+
+.item-label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.item-sub {
+  display: block;
+  font-size: 12px;
+  color: var(--text-2);
+  text-decoration: none;
+}
+
+.tag {
+  flex: none;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-2);
+  font-size: 11px;
+}
+
+.item-actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex: none;
+}
+
+.drill {
+  padding: 0 10px;
+  min-height: 28px;
+  font-size: 12px;
+}
+
+.crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
+  font-size: 13px;
+}
+
+.crumbs button {
+  padding: 2px 6px;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  color: var(--accent);
+  cursor: pointer;
+}
+
+.crumbs button:hover {
+  background: var(--accent-soft);
+}
+
+.crumbs span[aria-current] {
+  padding: 2px 6px;
+  font-weight: 600;
+}
+
+.empty {
+  margin: 8px 4px;
+  font-size: 13px;
+}
+
+.list-filter {
+  margin: -4px 0 12px;
+  font-size: 13px;
+  color: var(--text-2);
+}
+
+/* ---------- ダークモード ---------- */
+.dark-grid {
+  display: grid;
+  gap: 14px;
+  max-width: 560px;
+}
+
+.dark-grid[aria-disabled="true"] {
+  opacity: 0.45;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.field output {
+  color: var(--text-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>Docs Menu Customizer</title>
+    <link rel="stylesheet" href="../shared/ui.css" />
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header class="head">
+      <img src="../../icons/icon32.png" width="24" height="24" alt="" />
+      <h1>Docs Menu Customizer</h1>
+    </header>
+
+    <section class="card">
+      <label class="row" for="dark-enabled">
+        <span class="row-text">
+          <strong>ダークモード</strong>
+          <small class="muted">Google ドキュメントだけに適用</small>
+        </span>
+        <span class="switch"><input type="checkbox" id="dark-enabled" /><span></span></span>
+      </label>
+      <div class="dark-detail" id="dark-detail">
+        <label class="slider">
+          <span>背景の暗さ</span>
+          <input type="range" id="dark-strength" step="0.01" />
+          <output id="dark-strength-out"></output>
+        </label>
+        <label class="check">
+          <input type="checkbox" id="dark-preserve" />
+          <span>画像・絵文字の色をそのまま表示</span>
+        </label>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="row">
+        <span class="row-text">
+          <strong>ツールバー</strong>
+          <small class="muted" id="toolbar-summary"></small>
+        </span>
+      </div>
+      <button class="btn btn-primary wide" id="open-options">ツールバーを編集…</button>
+      <button class="link-btn" id="open-menus">メニューバー（ファイル・編集…）の設定</button>
+    </section>
+
+    <p class="hint muted" id="hint" hidden>Google ドキュメントのタブを開くと、変更がすぐに反映されます。</p>
+
+    <script src="../shared/settings.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

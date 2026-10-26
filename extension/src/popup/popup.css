@@ -1,0 +1,100 @@
+body {
+  width: 320px;
+  padding: 14px;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.head h1 {
+  font-size: 15px;
+}
+
+.card {
+  padding: 14px;
+  margin-bottom: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.row-text {
+  display: grid;
+}
+
+.row-text small {
+  font-size: 12px;
+}
+
+.dark-detail {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.dark-detail[aria-disabled="true"] {
+  opacity: 0.45;
+}
+
+.slider {
+  display: grid;
+  grid-template-columns: auto 1fr 3em;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+}
+
+.slider output {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-2);
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.wide {
+  width: 100%;
+  margin-top: 12px;
+}
+
+.link-btn {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  padding: 4px;
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.link-btn:hover {
+  text-decoration: underline;
+}
+
+.hint {
+  margin: 4px 2px 0;
+  font-size: 12px;
+}

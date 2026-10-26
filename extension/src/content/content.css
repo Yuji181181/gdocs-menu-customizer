@@ -1,0 +1,28 @@
+/* ---------- ダークモード（Google ドキュメントのみ。manifest の matches で /document/ に限定） ---------- */
+html.gdmc-dark {
+  filter: invert(var(--gdmc-strength, 0.9)) hue-rotate(180deg) !important;
+  background-color: #fff !important;
+}
+
+/* 写真・動画・色見本は反転を打ち消して元の色で表示する */
+html.gdmc-dark-preserve-images img,
+html.gdmc-dark-preserve-images video,
+html.gdmc-dark-preserve-images .docs-material-colorpalette-colorswatch-color {
+  filter: invert(1) hue-rotate(180deg) contrast(var(--gdmc-counter-contrast, 1.25));
+}
+
+/* ---------- ツールバー・メニューのカスタマイズ（並び順・非表示の個別ルールは toolbar.js が生成） ---------- */
+.gdmc-hidden,
+.gdmc-sep-collapsed {
+  display: none !important;
+}
+
+#docs-menubar[data-gdmc-ordered] {
+  display: inline-flex !important;
+  align-items: center;
+}
+
+.goog-menu[data-gdmc-ordered]:not([style*="display: none"]) {
+  display: flex !important;
+  flex-direction: column !important;
+}
