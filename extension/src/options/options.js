@@ -67,6 +67,7 @@ function selectTab(name, focus = false) {
   if (location.hash !== `#${name}`) history.replaceState(null, "", `#${name}`);
 }
 
+window.addEventListener("hashchange", () => selectTab(location.hash.slice(1)));
 document.querySelector(".tabs").addEventListener("click", (e) => {
   const tab = e.target.closest("[data-tab]");
   if (tab) selectTab(tab.dataset.tab);
