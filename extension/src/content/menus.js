@@ -21,7 +21,9 @@
   }
 
   function itemLabel(el) {
-    const skip = ".goog-menuitem-mnemonic-separator, .goog-menuitem-accel, .goog-submenu-arrow, .goog-menuitem-icon";
+    // 「新機能」などのバッジは後で消えるため、キーが変わらないようラベルから除く
+    const skip =
+      ".goog-menuitem-mnemonic-separator, .goog-menuitem-accel, .goog-submenu-arrow, .goog-menuitem-icon, .docs-new-badge, .docs-action-badge";
     const labelEl = el.querySelector(".goog-menuitem-label") ?? el.querySelector(".goog-menuitem-content") ?? el;
     return textWithout(labelEl, skip)
       .replace(/\s+/g, " ")
